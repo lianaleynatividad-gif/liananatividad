@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veg Fried Rice Order Form</title>
+<style>
+  body {
+    margin: 0;
+    height: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('ee.jpg'); 
+    background-size: cover;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 90%;
+    max-width: 1120px;
+    margin-top: 30px;
+  }
+  .description {
+    width: 42%;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 20px 14px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .description h1 {
+    font-size: 50px;
+    color: #3b2f2f;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow:
+      2px 2px 6px rgba(0,0,0,0.4),
+      0 0 10px rgba(255,215,0,0.6),
+      0 0 20px rgba(255,215,0,0.3);
+  }
+  .description img {
+    width: 88%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .description p {
+    font-size: 19.5px;
+    line-height: 2;
+    background-color: transparent;
+    padding: 6px;
+    font-weight: 500;
+  }
+  .browser-frame {
+    width: 40%;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .form-container {
+    background-color: rgba(255,255,255,0.3);
+    background-image: url('form.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 14px 25px;
+    border-radius: 10px;
+    color: #222;
+    text-align: left;
+    backdrop-filter: blur(6px);
+  }
+  h1 { text-align: center; font-size: 16px; color: #111; margin-bottom:10px; text-transform: uppercase; letter-spacing:0.8px;}
+  .section {
+    background-color: rgba(255,255,255,0.5);
+    border-radius:6px;
+    padding:8px 15px;
+    margin-bottom:8px;
+    border:1px solid rgba(0,0,0,0.5);
+    text-align:left;
+  }
+  .section h2 {
+    font-size:11.5px;
+    margin-bottom:5px;
+    border-bottom:1px solid #000;
+    padding-bottom:3px;
+    text-transform: uppercase;
+    letter-spacing:0.3px;
+  }
+  label { font-weight:600; font-size:11px; display:block; margin-top:3px; }
+  input[type="text"], input[type="number"], input[type="email"], input[type="date"], select, textarea {
+    padding:4px;
+    border:1.3px solid #000;
+    border-radius:4px;
+    font-size:11px;
+    background-color: rgba(255,255,255,0.3);
+    margin-bottom:5px;
+    display:block;
+    text-align:left;
+    color:#000;
+  }
+  .short-input { width:70%; }
+  .contact-input { width:40%; }
+  .address-box { width:80%; height:60px; }
+  .short-select, .short-date, .short-textarea { width:70%; }
+  .card-input { width:70%; }
+  textarea { resize:none; }
+  .flavor-option {
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    font-size:11px;
+    margin-bottom:6px;
+    gap:10px;
+  }
+  .flavor-option label { flex:1; margin:0; }
+  .flavor-option select { width:50px; }
+  .price { font-weight:bold; color:#222; font-size:11px; }
+  .total-container { text-align:right; font-size:12px; font-weight:bold; margin-top:6px; border-top:1px solid #000; padding-top:5px; }
+  button {
+    background-color:#000; color:white; border:none; font-weight:bold; padding:6px; border-radius:5px;
+    cursor:pointer; width:45%; display:block; margin:10px auto 0; font-size:12px; transition:0.2s ease;
+  }
+  button:hover { background-color:#333; transform:scale(1.03);}
+  .receipt-modal {
+    display:none; position:fixed; inset:0;
+    background-color: rgba(0,0,0,0.6);
+    justify-content:center; align-items:center; z-index:10;
+  }
+  .receipt-box {
+    background-color:#fff; border-radius:12px; padding:20px 25px; width:300px;
+    box-shadow:0 4px 25px rgba(0,0,0,0.35);
+    text-align:left; font-size:12.5px; color:#333; line-height:1.6; font-family:'Calibri',sans-serif;
+  }
+  .receipt-box h2 {
+    text-align:center; color:#000; border-bottom:2px solid #000; padding-bottom:6px; margin-bottom:10px;
+    font-size:16px; text-transform:uppercase; letter-spacing:1px;
+  }
+  .receipt-section { margin-bottom:10px; padding-bottom:6px; border-bottom:1px dashed #aaa;}
+  .receipt-section strong { color:#000; font-weight:600; }
+  .close-btn { background-color:#000; color:#fff; border:none; padding:6px 14px; border-radius:5px; cursor:pointer; display:block; margin:10px auto 0; font-size:12px; }
+  .close-btn:hover { background-color:#333; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="description">
+    <h1>Veg Fried Rice</h1>
+    <img src="cc.jpg" alt="Veg Fried Rice">
+    <p>When You Feel Bored with Boiled Rice, Always Try for Veg Rice.</p>
+  </div>
+
+  <div class="browser-frame">
+    <div class="form-container">
+      <h1>Order Form</h1>
+
+      <div class="section">
+        <h2>Customer Info</h2>
+        <label>Full Name:</label>
+        <input type="text" id="custName" class="short-input" required>
+        <label>Email:</label>
+        <input type="email" id="custEmail" class="short-input" required>
+        <label>Contact Number:</label>
+        <input type="text" id="custContact" class="contact-input" maxlength="11" required>
+        <label>Address:</label>
+        <textarea id="custAddress" class="address-box" required></textarea>
+      </div>
+
+      <div class="section">
+        <h2>Order Details</h2>
+        <!-- Flavors -->
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Kimchie Fried Rice" data-price="99"> Kimchie Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Sisig Fried Rice" data-price="90"> Sisig Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Crab Fried Rice" data-price="120"> Crab Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Tuna Fried Rice" data-price="120"> Tuna Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Adobo Fried Rice" data-price="120"> Adobo Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Bagoong Fried Rice" data-price="120"> Bagoong Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+        <div class="flavor-option">
+          <label><input type="checkbox" class="flavor" data-name="Spam Fried Rice" data-price="120"> Spam Fried Rice</label>
+          <select class="quantity"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          <span class="price">₱0</span>
+        </div>
+
+        <label>Delivery Date:</label>
+        <input type="date" id="deliveryDate" class="short-date" required>
+        <div class="total-container">Total: ₱<span id="total">0</span></div>
+        <label>Amount Paid:</label>
+        <input type="number" id="amountPaid" class="short-input" required>
+        <div class="total-container">Change: ₱<span id="change">0</span></div>
+
+        <label>Additional Note:</label>
+        <textarea id="note" class="short-textarea" placeholder="Add any special instructions..." style="height:35px;"></textarea>
+      </div>
+
+      <div class="section">
+        <h2>Payment Method</h2>
+        <select id="paymentMethod" class="short-select" required>
+          <option value="-select-">-Select-</option>
+          <option value="cod">Cash on Delivery</option>
+          <option value="gcash">GCash</option>
+          <option value="paymaya">Pay Maya</option>
+          <option value="card">Card</option>
+        </select>
+
+        <!-- GCash Fields -->
+        <div id="gcashFields" style="display:none; margin-top:6px;">
+          <label>GCash Number:</label>
+          <input type="text" id="gcashNumber" maxlength="11" class="short-input" placeholder="09XXXXXXXXX">
+          <label>GCash Password:</label>
+          <input type="password" id="gcashPass" class="short-input" placeholder="password/PIN">
+        </div>
+
+        <!-- PayMaya Fields -->
+        <div id="paymayaFields" style="display:none; margin-top:6px;">
+          <label>PayMaya Number:</label>
+          <input type="text" id="paymayaNumber" maxlength="11" class="short-input" placeholder="09XXXXXXXXX">
+          <label>PayMaya Password:</label>
+          <input type="password" id="paymayaPass" class="short-input" placeholder="password/PIN">
+        </div>
+
+        <!-- Card Fields -->
+        <div id="cardFields" style="display:none; margin-top:6px;">
+          <label>Card Number:</label>
+          <input type="password" id="cardNumber" maxlength="16" class="card-input" placeholder="Enter 16-digit card number">
+          <label>Card Password (PIN):</label>
+          <input type="password" id="cardPass" maxlength="6" class="card-input" placeholder="PIN">
+        </div>
+
+        <div id="paymentInstructions" style="font-size:11px; margin-top:6px; color:#111;"></div>
+      </div>
+
+      <button type="button" id="submitOrder">Submit Order</button>
+    </div>
+  </div>
+</div>
+
+<div class="receipt-modal" id="receiptModal">
+  <div class="receipt-box">
+    <h2>Order Receipt</h2>
+    <div id="receiptDetails"></div>
+    <button class="close-btn" onclick="closeReceipt()">OK</button>
+  </div>
+</div>
+
+<script>
+const flavors = document.querySelectorAll('.flavor-option');
+const totalDisplay = document.getElementById('total');
+const changeDisplay = document.getElementById('change');
+const paidInput = document.getElementById('amountPaid');
+
+const paymentMethod = document.getElementById('paymentMethod');
+const gcashFields = document.getElementById('gcashFields');
+const paymayaFields = document.getElementById('paymayaFields');
+const cardFields = document.getElementById('cardFields');
+
+const gcashNumber = document.getElementById('gcashNumber');
+const gcashPass = document.getElementById('gcashPass');
+const paymayaNumber = document.getElementById('paymayaNumber');
+const paymayaPass = document.getElementById('paymayaPass');
+const cardNumber = document.getElementById('cardNumber');
+const cardPass = document.getElementById('cardPass');
+
+const paymentInstructions = document.getElementById('paymentInstructions');
+
+let total = 0;
+
+function updatePrices() {
+  total = 0;
+  flavors.forEach(option => {
+    const checkbox = option.querySelector('.flavor');
+    const select = option.querySelector('.quantity');
+    const priceDisplay = option.querySelector('.price');
+    const price = parseFloat(checkbox.dataset.price);
+    const qty = parseInt(select.value) || 0;
+    if (checkbox.checked && qty > 0) {
+      const subtotal = price * qty;
+      priceDisplay.textContent = `₱${subtotal.toFixed(2)}`;
+      total += subtotal;
+    } else {
+      priceDisplay.textContent = '₱0';
+    }
+  });
+  totalDisplay.textContent = total.toFixed(2);
+  updateChange();
+}
+
+function updateChange() {
+  const paid = parseFloat(paidInput.value) || 0;
+  const change = paid - total;
+  changeDisplay.textContent = change >= 0 ? change.toFixed(2) : '0.00';
+}
+
+paymentMethod.addEventListener('change', () => {
+  const method = paymentMethod.value;
+
+  // hide all first
+  gcashFields.style.display = 'none';
+  paymayaFields.style.display = 'none';
+  cardFields.style.display = 'none';
+
+  // clear fields
+  gcashNumber.value = '';
+  gcashPass.value = '';
+  paymayaNumber.value = '';
+  paymayaPass.value = '';
+  cardNumber.value = '';
+  cardPass.value = '';
+
+  if (method === 'gcash') {
+    gcashFields.style.display = 'block';
+    paymentInstructions.textContent = 'Pay via GCash to 0917-XXXX-XXX. Enter your GCash number and password.';
+  } else if (method === 'paymaya') {
+    paymayaFields.style.display = 'block';
+    paymentInstructions.textContent = 'Pay via PayMaya to 0917-XXXX-XXX. Enter your PayMaya number and password.';
+  } else if (method === 'card') {
+    cardFields.style.display = 'block';
+    paymentInstructions.textContent = 'Enter your 16-digit card number and PIN.';
+  } else {
+    paymentInstructions.textContent = '';
+  }
+});
+
+flavors.forEach(option=>{
+  option.querySelector('.flavor').addEventListener('change', updatePrices);
+  option.querySelector('.quantity').addEventListener('change', updatePrices);
+});
+paidInput.addEventListener('input', updateChange);
+
+function validateForm(){
+  const required=['custName','custEmail','custContact','custAddress','deliveryDate','amountPaid'];
+  for(let id of required){
+    if(!document.getElementById(id).value.trim()){
+      alert("Please fill out all required fields.");
+      return false;
+    }
+  }
+
+  if(total <= 0){
+    alert("Please select at least one flavor and quantity.");
+    return false;
+  }
+
+  const paid = parseFloat(paidInput.value) || 0;
+  if(paid < total){
+    alert("Amount paid is less than the total.");
+    return false;
+  }
+
+  if(!paymentMethod.value){
+    alert("Please select a payment method.");
+    return false;
+  }
+
+  // Payment-specific validation
+  if(paymentMethod.value === 'gcash'){
+    if(!gcashNumber.value.trim() || gcashNumber.value.trim().length < 11){
+      alert("Please enter a valid GCash number (11 digits).");
+      return false;
+    }
+    if(!gcashPass.value.trim() || gcashPass.value.trim().length < 4){
+      alert("Please enter a valid GCash password/PIN (4+ characters).");
+      return false;
+    }
+  }
+
+  if(paymentMethod.value === 'paymaya'){
+    if(!paymayaNumber.value.trim() || paymayaNumber.value.trim().length < 11){
+      alert("Please enter a valid PayMaya number (11 digits).");
+      return false;
+    }
+    if(!paymayaPass.value.trim() || paymayaPass.value.trim().length < 4){
+      alert("Please enter a valid PayMaya password/PIN (4+ characters).");
+      return false;
+    }
+  }
+
+  if(paymentMethod.value === 'card'){
+    if(!cardNumber.value.trim() || cardNumber.value.trim().length < 16){
+      alert("Please enter a valid 16-digit card number.");
+      return false;
+    }
+    if(!cardPass.value.trim() || cardPass.value.trim().length < 3){
+      alert("Please enter a valid card PIN (at least 3 characters).");
+      return false;
+    }
+  }
+
+  return true;
+}
+
+document.getElementById('submitOrder').addEventListener('click',()=>{
+  if(!validateForm()) return;
+  alert(`Thank you! Your order has been submitted successfully.\nTotal: ₱${total.toFixed(2)}`);
+  showReceipt();
+});
+
+function maskNumberForReceipt(num, method){
+  if(!num) return 'N/A';
+  if(method === 'card'){
+    // show only last 4
+    const s = num.replace(/\s+/g,'');
+    return '**** **** **** ' + s.slice(-4);
+  }
+  // for gcash/paymaya show full but it's okay to format optionally
+  return num;
+}
+
+function showReceipt(){
+  const name=document.getElementById('custName').value;
+  const email=document.getElementById('custEmail').value;
+  const contact=document.getElementById('custContact').value;
+  const address=document.getElementById('custAddress').value;
+  const date=document.getElementById('deliveryDate').value;
+  const payment=paymentMethod.value;
+  const note=document.getElementById('note').value||'None';
+  const paid=parseFloat(paidInput.value) || 0;
+  const change=parseFloat(changeDisplay.textContent) || 0;
+
+  let items='';
+  flavors.forEach(option=>{
+    const checkbox=option.querySelector('.flavor');
+    const qty=parseInt(option.querySelector('.quantity').value) || 0;
+    const price=parseFloat(checkbox.dataset.price) || 0;
+    if(checkbox.checked && qty>0){
+      items+=`<p style="margin:3px 0">${checkbox.dataset.name} - ${qty} pcs (₱${(price*qty).toFixed(2)})</p>`;
+    }
+  });
+
+  // Payment info for receipt (do NOT show passwords)
+  let paymentInfo = 'N/A';
+  if(payment === 'gcash'){
+    paymentInfo = `GCash: ${maskNumberForReceipt(gcashNumber.value, 'gcash')}`;
+  } else if(payment === 'paymaya'){
+    paymentInfo = `PayMaya: ${maskNumberForReceipt(paymayaNumber.value, 'paymaya')}`;
+  } else if(payment === 'card'){
+    paymentInfo = `Card: ${maskNumberForReceipt(cardNumber.value, 'card')}`;
+  } else {
+    paymentInfo = 'Cash on Delivery';
+  }
+
+  document.getElementById('receiptDetails').innerHTML=`
+    <div class="receipt-section">
+      <strong>Customer Information</strong>
+      <p>Name: ${name}</p>
+      <p>Email: ${email}</p>
+      <p>Contact: ${contact}</p>
+      <p>Address: ${address}</p>
+    </div>
+
+    <div class="receipt-section">
+      <strong>Order Details</strong>
+      <p>Delivery Date: ${date}</p>
+      ${items}
+    </div>
+
+    <div class="receipt-section">
+      <strong>Payment Summary</strong>
+      <p>Payment Method: ${payment}</p>
+      <p>Payment Info: ${paymentInfo}</p>
+      <p>Total: ₱${total.toFixed(2)}</p>
+      <p>Amount Paid: ₱${paid.toFixed(2)}</p>
+      <p>Change: ₱${change.toFixed(2)}</p>
+    </div>
+
+    <div class="receipt-section">
+      <strong>Additional Note</strong>
+      <p>${note}</p>
+    </div>
+  `;
+  document.getElementById('receiptModal').style.display='flex';
+}
+
+function closeReceipt(){
+  document.getElementById('receiptModal').style.display='none';
+
+  // Reset form fields
+  ['custName','custEmail','custContact','custAddress','deliveryDate','amountPaid','note'].forEach(id=> {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+
+  // reset payment method and payment fields
+  paymentMethod.value = '';
+  paymentInstructions.textContent = '';
+  gcashFields.style.display = 'none';
+  paymayaFields.style.display = 'none';
+  cardFields.style.display = 'none';
+  gcashNumber.value = '';
+  gcashPass.value = '';
+  paymayaNumber.value = '';
+  paymayaPass.value = '';
+  cardNumber.value = '';
+  cardPass.value = '';
+
+  // reset flavors
+  flavors.forEach(option=>{
+    const chk = option.querySelector('.flavor');
+    const qty = option.querySelector('.quantity');
+    const priceDisplay = option.querySelector('.price');
+    if(chk) chk.checked = false;
+    if(qty) qty.value = 0;
+    if(priceDisplay) priceDisplay.textContent = '₱0';
+  });
+
+  total = 0;
+  totalDisplay.textContent = '0';
+  changeDisplay.textContent = '0';
+  document.getElementById('custName').focus();
+}
+</script>
+</body>
+</html>
