@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pancake Recipe</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: url('https://media.tenor.com/chlGY8SaMH0AAAAM/pancakes-syrup.gif') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 50px 20px;
+        color: #fff;
+    }
+
+    /* Transparent overlay for readability */
+    .container {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(6px);
+        padding: 40px 50px;
+        border-radius: 25px;
+        max-width: 700px;
+        width: 100%;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3em;
+        text-align: center;
+        margin-bottom: 25px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        color: #ffe5b4;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin: 20px 0 15px;
+        border-bottom: 2px solid #ffe5b4;
+        padding-bottom: 5px;
+        color: #fff3e0;
+    }
+
+    ul, ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        font-size: 1.1em;
+    }
+
+    ol li {
+        margin-bottom: 12px;
+    }
+
+    /* Optional: subtle hover effect on list items */
+    li:hover {
+        color: #ffd699;
+        transition: 0.2s ease;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 30px 25px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pancake Recipe</h1>
+
+        <h2>Ingredients</h2>
+        <ul>
+            <li>1 cup all-purpose flour</li>
+            <li>2 tablespoons sugar</li>
+            <li>2 teaspoons baking powder</li>
+            <li>1/4 teaspoon salt</li>
+            <li>1 cup milk</li>
+            <li>1 large egg</li>
+            <li>2 tablespoons melted butter or oil</li>
+            <li>1 teaspoon vanilla extract (optional)</li>
+        </ul>
+
+        <h2>Instructions</h2>
+        <ol>
+            <li>In one bowl, combine the flour, sugar, baking powder, and salt. Mix well.</li>
+            <li>In another bowl, beat the egg, then add milk, melted butter (or oil), and vanilla extract.</li>
+            <li>Pour the wet mixture into the dry ingredients. Stir gently until just combined. (Don’t overmix — small lumps are okay.)</li>
+            <li>Place a non-stick pan or skillet over medium heat. Lightly grease it with butter or oil.</li>
+            <li>Pour about 1/4 cup of batter for each pancake.</li>
+            <li>Cook until bubbles appear on top and the edges look dry (about 1–2 minutes).</li>
+            <li>Flip and cook the other side until golden brown.</li>
+            <li>Stack pancakes on a plate and serve warm.</li>
+        </ol>
+    </div>
+</body>
+</html>
