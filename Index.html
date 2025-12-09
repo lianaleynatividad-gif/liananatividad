@@ -1,104 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
+    body { background: #f2f2f2; }
+
+    /* NAVBAR */
+    header { position: fixed; top:0; width:100%; background:#111; padding:10px 0; z-index:1000; }
+    .navbar { width:90%; margin:auto; display:flex; justify-content:flex-end; gap:20px; }
+    .navbar a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .navbar a:hover { color:#ff9800; }
+
+    /* LANDING */
+    #landing {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        height:100vh; 
+        text-align:center; 
+        background-image: url('background.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        animation: fadeIn 1s ease; 
+        padding-top:50px;
+        position: relative;
+    }
+    #landing::before {
+        content:"";
+        position:absolute;
+        top:0; left:0; width:100%; height:100%;
+        background: rgba(0,0,0,0.4);
+        z-index:1;
+    }
+    #landing img, #landing h1 {
+        position: relative;
+        z-index:2;
+    }
+
+    #landing img { width:160px; height:160px; border-radius:50%; border:4px solid #ff9800; object-fit:cover; animation: popIn 1s ease;}
+    #landing h1 { font-size:2.5rem; margin:15px 0; animation: fadeIn 1s ease; }
+
+    @keyframes fadeIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes popIn { from { transform: scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+    /* SECTIONS */
+    section { 
+        display:none; 
+        padding:80px 20px 50px; 
+        width:90%; 
+        margin:auto; 
+        animation: slideUp 0.7s ease; 
+        border-radius: 12px;
+        color: #fff; 
+        text-align: center;
+    }
+    section.active { display:block; }
+
+    @keyframes slideUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+    /* Backgrounds for sections */
+    #about {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
+    }
+    #projects {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
+    }
+    #contact {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
+    }
+
+    /* PROJECT CARDS */
+    .project-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; margin-top:30px;}
+    .project-card { background:rgba(255,255,255,0.9); padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; color:#111; }
+    .project-card:hover { transform:translateY(-8px); box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+    .project-card img { width:100%; height:160px; object-fit:cover; border-radius:10px; }
+
+    footer { text-align:center; padding:20px; background:#111; color:#fff; margin-top:40px; }
+
+    .back { margin-top:20px; padding:10px 20px; background:black; color:white; border:none; cursor:pointer; border-radius:5px;}
+
+    a.btn { display:inline-block; margin-top:10px; padding:8px 15px; background:#ff9800; color:#fff; border-radius:5px; text-decoration:none; transition:0.3s; }
+    a.btn:hover { background:#e68900; }
+</style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar">
-            <h1 class="logo">My Portfolio</h1>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <img src="Ley.jpg" alt="Profile Picture" class="profile-img">
-        <div class="hero-content">
-            <h2>Hello, I'm <span class="highlight">Liana Ley A. Natividad</span></h2>
-            <p>I'm an IT student and aspiring web developer.</p>
-            <a href="#projects" class="btn">View My Work</a>
+<header>
+    <nav class="navbar">
+        <a href="#" onclick="showSection('about')">About Me</a>
+        <a href="#" onclick="showSection('projects')">Projects</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+    </nav>
+</header>
+
+<div id="landing">
+    <img src="Ley.jpg" alt="Profile Picture">
+    <h1>Liana Ley A. Natividad</h1>
+</div>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>Hi! I’m Liana Ley A. Natividad, an IT student at Occidental Mindoro State College, SJ Campus, and I live in Magsaysay, Occidental Mindoro. I love exploring creative hobbies like playing instruments, singing, dancing, and cooking. In my free time, I enjoy reading Wattpad stories, discovering new things, and connecting with people. I’d describe myself as friendly, curious, and determined, always eager to learn and grow. Music is a big part of my life—Enhypen is my favorite boy group, and I know all their songs, but I also enjoy listening to uplifting Christian music. When I’m alone, I find peace in my room while enjoying my favorite foods; it’s my little sanctuary. I live by the belief that "If others can do it, I can too," and I know that with determination, effort, and courage, I can achieve anything I set my mind to.</p>
+    <button class="back" onclick="goBack()">Back</button>
+</section>
+
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-list">
+        <div class="project-card">
+            <img src="gg.jpg" alt="Story Project">
+            <h3>Short Story Website</h3>
+            <p>A simple webpage showcasing my creative writing story.</p>
+            <a href="Story.html" class="btn" target="_blank">View Story</a>
         </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>
-            Hi! I’m Liana Ley A. Natividad, an IT student passionate about creating websites and projects that make everyday life easier and more exciting.
-        </p>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-
-        <div class="project-list">
-
-            <!-- STORY PROJECT -->
-            <div class="project-card">
-                <img src="gg.jpg" alt="Story Project">
-                <h3>Short Story Website</h3>
-                <p>A simple webpage that showcases my creative writing story.</p>
-                <a href="Story.html" class="btn" target="_blank">View Story</a>
-            </div>
-
-            <!-- RECIPE PROJECT -->
-            <div class="project-card">
-                <img src="vv.jpg" alt="Recipe Project">
-                <h3>Recipe Website</h3>
-                <p>A simple recipe site showcasing fluffy pancakes with ingredients and instructions.</p>
-                <a href="Recipe.html" class="btn">View Project</a>
-            </div>
-
-            <!-- ORDERED FORM PROJECT -->
-            <div class="project-card">
-                <img src="ee.jpg" alt="Ordered Form Project">
-                <h3>Ordered Form Website</h3>
-                <p>Website guides users to easily order Liana's flavorful fried rice online.</p>
-                <a href="Liana's Fried Rice.html" class="btn">View Project</a>
-            </div>
-
-            <!-- FOURTH PROJECT -->
-            <div class="project-card">
-                <img src="BI.avif" alt="CSS">
-                <h3>Bicycle</h3>
-                <p>A simple design and promotion of a bicycle.</p>
-                <a href="CSS.html" class="btn">View Project</a>
-            </div>
-
-            <!-- BMI PROJECT (CENTERED) -->
-            <div class="project-card">
-                <img src="med.jpg" alt="BMI Project">
-                <h3>BMI Website</h3>
-                <p>A website that calculates and tracks users' Body Mass Index.</p>
-                <a href="BMI.html" class="btn">View Project</a>
-            </div>
-
+        <div class="project-card">
+            <img src="vv.jpg" alt="Recipe Project">
+            <h3>Recipe Website</h3>
+            <p>Fluffy pancakes with ingredients and instructions.</p>
+            <a href="Recipe.html" class="btn">View Project</a>
         </div>
-    </section>
+        <div class="project-card">
+            <img src="ee.jpg" alt="Ordered Form Project">
+            <h3>Ordered Form Website</h3>
+            <p>Order Liana's flavorful fried rice online.</p>
+            <a href="Liana's Fried Rice.html" class="btn">View Project</a>
+        </div>
+        <div class="project-card">
+            <img src="BI.avif" alt="Bicycle">
+            <h3>Bicycle</h3>
+            <p>Simple design and promotion of a bicycle.</p>
+            <a href="CSS.html" class="btn">View Project</a>
+        </div>
+        <div class="project-card">
+            <img src="med.jpg" alt="BMI Project">
+            <h3>BMI Website</h3>
+            <p>A website that calculates and tracks users' Body Mass Index.</p>
+            <a href="BMI.html" class="btn">View Project</a>
+        </div>
+    </div>
+    <button class="back" onclick="goBack()">Back</button>
+</section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>If you want to reach out, message me here:</p>
-        <ul>
-            <li>Email: <a href="mailto:lianaleynatividad@gmail.com">lianaleynatividad@gmail.com</a></li>
-            <li>Facebook: <a href="https://facebook.com/" target="_blank">Liana Ley Natividad</a></li>
-        </ul>
-    </section>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <ul>
+        <li>Email: <a href="mailto:lianaleynatividad@gmail.com">lianaleynatividad@gmail.com</a></li>
+        <li>Facebook: <a href="https://facebook.com/" target="_blank">Liana Ley Natividad</a></li>
+    </ul>
+    <button class="back" onclick="goBack()">Back</button>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Liana Ley A. Natividad. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Liana Ley A. Natividad. All rights reserved.</p>
+</footer>
+
+<script>
+function showSection(id){
+    document.getElementById('landing').style.display='none';
+    document.getElementById('about').classList.remove('active');
+    document.getElementById('projects').classList.remove('active');
+    document.getElementById('contact').classList.remove('active');
+    document.getElementById(id).classList.add('active');
+}
+function goBack(){
+    document.getElementById('about').classList.remove('active');
+    document.getElementById('projects').classList.remove('active');
+    document.getElementById('contact').classList.remove('active');
+    document.getElementById('landing').style.display='flex';
+}
+</script>
+
 </body>
 </html>
