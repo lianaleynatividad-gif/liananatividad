@@ -4,91 +4,219 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Portfolio</title>
+
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
-    body { background: #f2f2f2; }
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+        background:#f2f2f2;
+        color:#fff;
+    }
 
     /* NAVBAR */
-    header { position: fixed; top:0; width:100%; background:#111; padding:10px 0; z-index:1000; }
-    .navbar { width:90%; margin:auto; display:flex; justify-content:flex-end; gap:20px; }
-    .navbar a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
-    .navbar a:hover { color:#ff9800; }
-
-    /* LANDING */
-    #landing {
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        justify-content: center;
-        height:100vh; 
-        text-align:center; 
-        background-image: url('background.jpg'); 
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        color: #fff;
-        animation: fadeIn 1s ease; 
-        padding-top:50px;
-        position: relative;
+    header{
+        position:fixed;
+        top:0;
+        width:100%;
+        background:#000;
+        padding:12px 0;
+        z-index:1000;
+        box-shadow:0 2px 10px rgba(0,0,0,0.3);
     }
-    #landing::before {
+    .navbar{
+        width:90%;
+        margin:auto;
+        display:flex;
+        justify-content:flex-end;
+        gap:30px;
+    }
+    .navbar a{
+        color:#fff;
+        text-decoration:none;
+        font-size:1.1rem;
+        font-weight:600;
+        transition:0.3s;
+    }
+    .navbar a:hover{
+        color:#ff9800;
+    }
+
+    /* LANDING PAGE */
+    #landing{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        height:100vh;
+        text-align:center;
+        background:url('background.jpg') center/cover no-repeat;
+        position:relative;
+        padding-top:60px;
+    }
+    #landing::before{
         content:"";
         position:absolute;
-        top:0; left:0; width:100%; height:100%;
-        background: rgba(0,0,0,0.4);
+        top:0; left:0;
+        width:100%; height:100%;
+        background:rgba(0,0,0,0.45);
         z-index:1;
     }
-    #landing img, #landing h1 {
-        position: relative;
+    #landing img, #landing h1, #landing a{
         z-index:2;
+        position:relative;
     }
-
-    #landing img { width:160px; height:160px; border-radius:50%; border:4px solid #ff9800; object-fit:cover; animation: popIn 1s ease;}
-    #landing h1 { font-size:2.5rem; margin:15px 0; animation: fadeIn 1s ease; }
-
-    @keyframes fadeIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes popIn { from { transform: scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
+    #landing img{
+        width:200px;
+        height:200px;
+        border-radius:50%;
+        border:5px solid #ff9800;
+        object-fit:cover;
+        margin-bottom:15px;
+    }
+    #landing h1{
+        font-size:3rem;
+        margin-top:10px;
+    }
 
     /* SECTIONS */
-    section { 
-        display:none; 
-        padding:80px 20px 50px; 
-        width:90%; 
-        margin:auto; 
-        animation: slideUp 0.7s ease; 
-        border-radius: 12px;
-        color: #fff; 
-        text-align: center;
+    section{
+        display:none;
+        padding:130px 20px 60px;
+        width:100%;
+        min-height:100vh;
+        animation:fadeInSection 0.5s ease;
+        color:white;
+        text-align:center;
     }
-    section.active { display:block; }
-
-    @keyframes slideUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-
-    /* Backgrounds for sections */
-    #about {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
-    }
-    #projects {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
-    }
-    #contact {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ee.jpg') center/cover no-repeat;
+    section.active{
+        display:block;
     }
 
-    /* PROJECT CARDS */
-    .project-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; margin-top:30px;}
-    .project-card { background:rgba(255,255,255,0.9); padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; color:#111; }
-    .project-card:hover { transform:translateY(-8px); box-shadow:0 6px 20px rgba(0,0,0,0.2);}
-    .project-card img { width:100%; height:160px; object-fit:cover; border-radius:10px; }
+    @keyframes fadeInSection{
+        from{opacity:0; transform:translateY(20px);}
+        to{opacity:1; transform:translateY(0);}
+    }
 
-    footer { text-align:center; padding:20px; background:#111; color:#fff; margin-top:40px; }
+    /* BACKGROUNDS */
+    #about, #projects, #contact{
+        background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('ee.jpg') center/cover no-repeat;
+    }
 
-    .back { margin-top:20px; padding:10px 20px; background:black; color:white; border:none; cursor:pointer; border-radius:5px;}
+    /* TITLES */
+    h2{
+        font-size:2.8rem;
+        margin-bottom:20px;
+        font-weight:700;
+    }
+    p{
+        font-size:1.3rem;
+        line-height:1.7;
+        max-width:900px;
+        margin:auto;
+    }
 
-    a.btn { display:inline-block; margin-top:10px; padding:8px 15px; background:#ff9800; color:#fff; border-radius:5px; text-decoration:none; transition:0.3s; }
-    a.btn:hover { background:#e68900; }
+    /* PROJECTS */
+    .project-list{
+        margin-top:40px;
+        display:grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap:30px;
+    }
+    .bottom-row {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+    }
+    .project-card{
+        background:#fff;
+        color:#000;
+        padding:20px;
+        border-radius:15px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.2);
+        transition:0.3s;
+    }
+    .project-card:hover{
+        transform:translateY(-8px);
+        box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    }
+    .project-card img{
+        width:100%;
+        height:200px;
+        object-fit:cover;
+        border-radius:12px;
+    }
+    .project-card h3{
+        margin-top:15px;
+        font-size:1.5rem;
+        font-weight:700;
+    }
+
+    /* BUTTONS */
+    .btn, .back{
+        display:inline-block;
+        padding:12px 20px;
+        margin-top:15px;
+        border:none;
+        border-radius:6px;
+        background:#ff9800;
+        color:white;
+        text-decoration:none;
+        font-size:1rem;
+        font-weight:600;
+        cursor:pointer;
+        transition:0.3s;
+    }
+    .btn:hover, .back:hover{
+        background:#e68900;
+    }
+
+    /* CONTACT */
+    #contact ul{
+        list-style:none;
+        font-size:1.4rem;
+        margin-top:20px;
+    }
+    #contact li{
+        margin:15px 0;
+    }
+
+    /* FOOTER */
+    footer{
+        background:#000;
+        text-align:center;
+        padding:20px;
+        color:#fff;
+        font-size:1rem;
+    }
+
+    /* RESPONSIVE */
+    @media screen and (max-width:1024px){
+        .project-list{
+            grid-template-columns:repeat(2, 1fr);
+        }
+        .bottom-row{
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+    @media screen and (max-width:700px){
+        .project-list{
+            grid-template-columns:1fr;
+        }
+        .bottom-row{
+            flex-direction: column;
+            gap:20px;
+        }
+    }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -99,60 +227,79 @@
     </nav>
 </header>
 
+<!-- LANDING WITH VIEW WORK BUTTON -->
 <div id="landing">
     <img src="Ley.jpg" alt="Profile Picture">
     <h1>Liana Ley A. Natividad</h1>
+
+    <a href="#" class="btn" style="margin-top:25px; font-size:1.2rem;" onclick="showSection('projects')">
+        View Work
+    </a>
 </div>
 
 <section id="about">
     <h2>About Me</h2>
-    <p>Hi! I’m Liana Ley A. Natividad, an IT student at Occidental Mindoro State College, SJ Campus, and I live in Magsaysay, Occidental Mindoro. I love exploring creative hobbies like playing instruments, singing, dancing, and cooking. In my free time, I enjoy reading Wattpad stories, discovering new things, and connecting with people. I’d describe myself as friendly, curious, and determined, always eager to learn and grow. Music is a big part of my life—Enhypen is my favorite boy group, and I know all their songs, but I also enjoy listening to uplifting Christian music. When I’m alone, I find peace in my room while enjoying my favorite foods; it’s my little sanctuary. I live by the belief that "If others can do it, I can too," and I know that with determination, effort, and courage, I can achieve anything I set my mind to.</p>
+    <p>
+        Hi! I’m Liana Ley A. Natividad, an IT student at Occidental Mindoro State College, SJ Campus, and I live in Magsaysay, Occidental Mindoro. I love exploring creative hobbies like playing instruments, singing, dancing, and cooking. In my free time, I enjoy reading Wattpad stories, discovering new things, and connecting with people. I’d describe myself as friendly, curious, and determined, always eager to learn and grow. Music is a big part of my life—Enhypen is my favorite boy group, and I know all their songs, but I also enjoy listening to uplifting Christian music. When I’m alone, I find peace in my room while enjoying my favorite foods; it’s my little sanctuary. I live by the belief that "If others can do it, I can too," and I know that with determination, effort, and courage, I can achieve anything I set my mind to.
+    </p>
     <button class="back" onclick="goBack()">Back</button>
 </section>
 
 <section id="projects">
     <h2>My Projects</h2>
+
+    <!-- TOP ROW: 3 PROJECTS -->
     <div class="project-list">
         <div class="project-card">
-            <img src="gg.jpg" alt="Story Project">
+            <img src="gg.jpg" alt="Short Story Project">
             <h3>Short Story Website</h3>
-            <p>A simple webpage showcasing my creative writing story.</p>
+            <p>A creative writing project turned into a webpage.</p>
             <a href="Story.html" class="btn" target="_blank">View Story</a>
         </div>
+
         <div class="project-card">
             <img src="vv.jpg" alt="Recipe Project">
             <h3>Recipe Website</h3>
-            <p>Fluffy pancakes with ingredients and instructions.</p>
-            <a href="Recipe.html" class="btn">View Project</a>
+            <p>Simple webpage featuring fluffy pancakes.</p>
+            <a href="Recipe.html" class="btn" target="_blank">View Project</a>
         </div>
+
         <div class="project-card">
-            <img src="ee.jpg" alt="Ordered Form Project">
-            <h3>Ordered Form Website</h3>
-            <p>Order Liana's flavorful fried rice online.</p>
-            <a href="Liana's Fried Rice.html" class="btn">View Project</a>
-        </div>
-        <div class="project-card">
-            <img src="BI.avif" alt="Bicycle">
-            <h3>Bicycle</h3>
-            <p>Simple design and promotion of a bicycle.</p>
-            <a href="CSS.html" class="btn">View Project</a>
-        </div>
-        <div class="project-card">
-            <img src="med.jpg" alt="BMI Project">
-            <h3>BMI Website</h3>
-            <p>A website that calculates and tracks users' Body Mass Index.</p>
-            <a href="BMI.html" class="btn">View Project</a>
+            <img src="ee.jpg" alt="Order Form Project">
+            <h3>Order Form</h3>
+            <p>Online order form for Liana’s flavorful fried rice.</p>
+            <a href="Liana's Fried Rice.html" class="btn" target="_blank">View Project</a>
         </div>
     </div>
+
+    <!-- BOTTOM ROW: 2 PROJECTS CENTERED -->
+    <div class="bottom-row">
+        <div class="project-card">
+            <img src="BI.avif" alt="Bicycle Project">
+            <h3>Bicycle Page</h3>
+            <p>Design and details of a simple bicycle.</p>
+            <a href="CSS.html" class="btn" target="_blank">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="med.jpg" alt="BMI Project">
+            <h3>BMI Calculator</h3>
+            <p>A clean and functional BMI calculator website.</p>
+            <a href="BMI.html" class="btn" target="_blank">View Project</a>
+        </div>
+    </div>
+
     <button class="back" onclick="goBack()">Back</button>
 </section>
 
 <section id="contact">
     <h2>Contact Me</h2>
+
     <ul>
-        <li>Email: <a href="mailto:lianaleynatividad@gmail.com">lianaleynatividad@gmail.com</a></li>
-        <li>Facebook: <a href="https://facebook.com/" target="_blank">Liana Ley Natividad</a></li>
+        <li>Email: <a href="mailto:lianaleynatividad@gmail.com" style="color:#ff9800;">lianaleynatividad@gmail.com</a></li>
+        <li>Facebook: <a href="https://facebook.com/" target="_blank" style="color:#ff9800;">Liana Ley Natividad</a></li>
     </ul>
+
     <button class="back" onclick="goBack()">Back</button>
 </section>
 
@@ -162,17 +309,18 @@
 
 <script>
 function showSection(id){
-    document.getElementById('landing').style.display='none';
-    document.getElementById('about').classList.remove('active');
-    document.getElementById('projects').classList.remove('active');
-    document.getElementById('contact').classList.remove('active');
+    document.getElementById('landing').style.display = 'none';
+    ['about','projects','contact'].forEach(sec=>{
+        document.getElementById(sec).classList.remove('active');
+    });
     document.getElementById(id).classList.add('active');
 }
+
 function goBack(){
-    document.getElementById('about').classList.remove('active');
-    document.getElementById('projects').classList.remove('active');
-    document.getElementById('contact').classList.remove('active');
-    document.getElementById('landing').style.display='flex';
+    ['about','projects','contact'].forEach(sec=>{
+        document.getElementById(sec).classList.remove('active');
+    });
+    document.getElementById('landing').style.display = 'flex';
 }
 </script>
 
