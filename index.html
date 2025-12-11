@@ -32,18 +32,23 @@
         width:90%;
         margin:auto;
         display:flex;
-        justify-content:flex-end;
+        justify-content:center; /* Center all links */
         gap:30px;
     }
+
+    /* Navbar links */
     .navbar a{
         color:#fff;
         text-decoration:none;
         font-size:1.1rem;
         font-weight:600;
         transition:0.3s;
+        padding:6px 12px;
+        border-radius:5px;
+        background:#ff9800;
     }
     .navbar a:hover{
-        color:#ff9800;
+        background:#e68900;
     }
 
     /* LANDING PAGE */
@@ -66,7 +71,7 @@
         background:rgba(0,0,0,0.45);
         z-index:1;
     }
-    #landing img, #landing h1, #landing a{
+    #landing img, #landing h1, #landing a, #landing h2{
         z-index:2;
         position:relative;
     }
@@ -104,7 +109,7 @@
 
     /* BACKGROUNDS */
     #about, #projects, #contact{
-        background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('ee.jpg') center/cover no-repeat;
+        background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('kk.jpg') center/cover no-repeat;
     }
 
     /* TITLES */
@@ -177,13 +182,24 @@
     }
 
     /* CONTACT */
+    #contact{
+        text-align:center;
+    }
     #contact ul{
         list-style:none;
         font-size:1.4rem;
-        margin-top:20px;
+        margin:20px auto 0 auto;
+        padding:0;
     }
     #contact li{
         margin:15px 0;
+    }
+    #contact a{
+        color:#ff9800;
+        text-decoration:none;
+    }
+    #contact a:hover{
+        text-decoration:underline;
     }
 
     /* FOOTER */
@@ -221,6 +237,7 @@
 
 <header>
     <nav class="navbar">
+        <a href="#" onclick="goBack()">Home</a>
         <a href="#" onclick="showSection('about')">About Me</a>
         <a href="#" onclick="showSection('projects')">Projects</a>
         <a href="#" onclick="showSection('contact')">Contact</a>
@@ -229,6 +246,12 @@
 
 <!-- LANDING WITH VIEW WORK BUTTON -->
 <div id="landing">
+
+    <!-- ⭐ DINAGDAG KO LANG ITO ⭐ -->
+    <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ff9800; letter-spacing:2px; font-weight:700;">
+        MY PORTFOLIO
+    </h2>
+
     <img src="Ley.jpg" alt="Profile Picture">
     <h1>Liana Ley A. Natividad</h1>
 
@@ -240,13 +263,14 @@
 <section id="about">
     <h2>About Me</h2>
     <p>
-        Hi! I’m Liana Ley A. Natividad, an IT student at Occidental Mindoro State College, SJ Campus, and I live in Magsaysay, Occidental Mindoro. I love exploring creative hobbies like playing instruments, singing, dancing, and cooking. In my free time, I enjoy reading Wattpad stories, discovering new things, and connecting with people. I’d describe myself as friendly, curious, and determined, always eager to learn and grow. Music is a big part of my life—Enhypen is my favorite boy group, and I know all their songs, but I also enjoy listening to uplifting Christian music. When I’m alone, I find peace in my room while enjoying my favorite foods; it’s my little sanctuary. I live by the belief that "If others can do it, I can too," and I know that with determination, effort, and courage, I can achieve anything I set my mind to.
+        Hi! I’m Liana Ley A. Natividad, 20 years of age and an IT student at Occidental Mindoro State College - SJ Campus.I live in Magsaysay, Occidental Mindoro. I love exploring creative hobbies like playing instruments, singing, dancing, and cooking. In my free time, I enjoy reading Wattpad stories, discovering new things, and connecting with people. I’d describe myself as friendly, curious, and determined, always eager to learn and grow. Music is a big part of my life—Enhypen is my favorite boy group, and I know all their songs, but I also enjoy listening to uplifting Christian music. When I’m alone, I find peace in my room while enjoying my favorite foods; it’s my little sanctuary. I live by the belief that "If others can do it, I can too," and I know that with determination, effort, and courage, I can achieve anything I set my mind to.
     </p>
     <button class="back" onclick="goBack()">Back</button>
 </section>
 
 <section id="projects">
     <h2>My Projects</h2>
+	
 
     <!-- TOP ROW: 3 PROJECTS -->
     <div class="project-list">
@@ -296,8 +320,8 @@
     <h2>Contact Me</h2>
 
     <ul>
-        <li>Email: <a href="mailto:lianaleynatividad@gmail.com" style="color:#ff9800;">lianaleynatividad@gmail.com</a></li>
-        <li>Facebook: <a href="https://facebook.com/" target="_blank" style="color:#ff9800;">Liana Ley Natividad</a></li>
+        <li>Email: <a href="mailto:lianaleynatividad@gmail.com">lianaleynatividad@gmail.com</a></li>
+        <li>Facebook: <a href="https://facebook.com/" target="_blank">Liana Ley Natividad</a></li>
     </ul>
 
     <button class="back" onclick="goBack()">Back</button>
