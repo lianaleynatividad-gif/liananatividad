@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Portfolio</title>
-
 <style>
     *{
         margin:0;
@@ -32,7 +31,7 @@
         width:90%;
         margin:auto;
         display:flex;
-        justify-content:center; /* Center all links */
+        justify-content:center;
         gap:30px;
     }
 
@@ -246,15 +245,11 @@
 
 <!-- LANDING WITH VIEW WORK BUTTON -->
 <div id="landing">
-
-    <!-- ⭐ DINAGDAG KO LANG ITO ⭐ -->
     <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ff9800; letter-spacing:2px; font-weight:700;">
         MY PORTFOLIO
     </h2>
-
     <img src="Ley.jpg" alt="Profile Picture">
     <h1>Liana Ley A. Natividad</h1>
-
     <a href="#" class="btn" style="margin-top:25px; font-size:1.2rem;" onclick="showSection('projects')">
         View Work
     </a>
@@ -270,29 +265,28 @@
 
 <section id="projects">
     <h2>My Projects</h2>
-	
-
+    
     <!-- TOP ROW: 3 PROJECTS -->
     <div class="project-list">
         <div class="project-card">
             <img src="gg.jpg" alt="Short Story Project">
             <h3>Short Story Website</h3>
             <p>A creative writing project turned into a webpage.</p>
-            <a href="Story.html" class="btn" target="_blank">View Story</a>
+            <a href="Story.html" class="btn" onclick="showSection('projects')">View Story</a>
         </div>
 
         <div class="project-card">
             <img src="vv.jpg" alt="Recipe Project">
             <h3>Recipe Website</h3>
             <p>Simple webpage featuring fluffy pancakes.</p>
-            <a href="Recipe.html" class="btn" target="_blank">View Project</a>
+            <a href="Recipe.html" class="btn" onclick="showSection('projects')">View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="ee.jpg" alt="Order Form Project">
+            <img src="Liana%27s Fried Rice.html" alt="Order Form Project">
             <h3>Order Form</h3>
             <p>Online order form for Liana’s flavorful fried rice.</p>
-            <a href="Liana's Fried Rice.html" class="btn" target="_blank">View Project</a>
+            <a href="Liana%27s Fried Rice.html" class="btn" onclick="showSection('projects')">View Project</a>
         </div>
     </div>
 
@@ -302,14 +296,14 @@
             <img src="BI.avif" alt="Bicycle Project">
             <h3>Bicycle Page</h3>
             <p>Design and details of a simple bicycle.</p>
-            <a href="CSS.html" class="btn" target="_blank">View Project</a>
+            <a href="CSS.html" class="btn" onclick="showSection('projects')">View Project</a>
         </div>
 
         <div class="project-card">
             <img src="med.jpg" alt="BMI Project">
             <h3>BMI Calculator</h3>
             <p>A clean and functional BMI calculator website.</p>
-            <a href="BMI.html" class="btn" target="_blank">View Project</a>
+            <a href="BMI.html" class="btn" onclick="showSection('projects')">View Project</a>
         </div>
     </div>
 
@@ -318,12 +312,10 @@
 
 <section id="contact">
     <h2>Contact Me</h2>
-
     <ul>
         <li>Email: <a href="mailto:lianaleynatividad@gmail.com">lianaleynatividad@gmail.com</a></li>
         <li>Facebook: <a href="https://facebook.com/" target="_blank">Liana Ley Natividad</a></li>
     </ul>
-
     <button class="back" onclick="goBack()">Back</button>
 </section>
 
